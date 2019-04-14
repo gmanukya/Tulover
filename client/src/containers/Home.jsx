@@ -120,25 +120,34 @@ const StyledDatePicker = styled(DatePicker)`
 
 class Home extends Component {
     state = {
-        loading: false,
+        loading: true,
         allStockholders: [],
         totalSharesAmount: 0,
         date: new Date()
+    }
+
+    componentDidMount() {
+        const { data } = this.props
+        const { allStockholders } = data || {}
+
+        this.setAllStockholders(allStockholders)
     }
 
     componentWillReceiveProps(nextProps) {
         const { data } = nextProps
         const { allStockholders } = data || {}
 
-        if (data && allStockholders) {
+        this.setAllStockholders(allStockholders)
+    }
+
+    setAllStockholders = allStockholders => {
+        if (allStockholders) {
             const totalSharesAmount = allStockholders.reduce(
                 (total, stockholder) => total + stockholder.shares,
                 0
             )
 
-            this.setState({ allStockholders, totalSharesAmount })
-        } else {
-            this.setState({ loading: true })
+            this.setState({ allStockholders, totalSharesAmount, loading: false })
         }
     }
 
@@ -149,8 +158,6 @@ class Home extends Component {
     }
 
     handleDateChange = async date => {
-        let newDate
-
         try {
             const res = await client.query({
                 query: GET_ALL_STOCKHOLDERS_WITH_SHARES,
@@ -160,9 +167,6 @@ class Home extends Component {
             const { data } = res
             const { allStockholders } = data || {}
 
-            // if (allStockholders) {
-            //     newDate = moment()
-            // }
             this.setState({ allStockholders, date })
         } catch (err) {
             console.log(`An error occured: ${err}`)

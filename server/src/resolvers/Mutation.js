@@ -15,20 +15,30 @@ const createStockholder = name => {
 
 const createTransaction = (parent, args, context) => {
     let { stockholderId } = args
+    const { amount, date, stockholderName } = args
 
     if (!stockholderId) {
-        stockholderId = createStockholder(args.stockholderName)
+        stockholderId = createStockholder(stockholderName)
     }
 
     const transaction = {
         id: uuidv4(),
-        amount: args.amount,
+        amount,
         stockholder_id: stockholderId,
-        date: args.date
+        date
     }
 
     transactionsData.push(transaction)
-    return transaction
+
+    return {
+        id: transaction.id,
+        amount,
+        date,
+        stockholder: {
+            id: stockholderId,
+            name: stockholderName
+        }
+    }
 }
 
 module.exports = {

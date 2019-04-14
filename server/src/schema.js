@@ -13,9 +13,10 @@ const typeDefs = gql`
     type Mutation {
         createTransaction(
             stockholderId: ID
+            stockholderName: String!
             amount: Int!
-            date: DateTime
-        ): Stockholder
+            date: DateTime!
+        ): Transaction
     }
 
     type Stockholder {
