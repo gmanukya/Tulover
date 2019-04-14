@@ -9,7 +9,7 @@ const SideBarContainer = styled.div`
     flex-wrap: wrap;
     background: #1f263e;
     height: -webkit-fill-available;
-    width: 250px;
+    min-width: 250px;
 `
 
 const CompanyLogo = styled.img`

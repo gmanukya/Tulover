@@ -8,13 +8,22 @@ const WrapperContainer = styled.div`
     display: flex;
 `
 
+const MainViewContainer = styled.div`
+    position: absolute;
+    width: calc(100% - 250px);
+    height: 100%;
+    left: 250px;
+    top: 86px;
+    background: #e2e2e24f;
+`
+
 class WrapperComponent extends Component {
     render() {
         return (
-            <WrapperContainer style={{ display: 'flex' }}>
+            <WrapperContainer>
                 <SideBar />
                 <Header />
-                {/* {this.props.children} */}
+                <MainViewContainer>{this.props.children}</MainViewContainer>
             </WrapperContainer>
         )
     }

@@ -39,9 +39,9 @@ class Header extends Component {
     render() {
         return (
             <HeaderContainer>
-                <StyledFontAwesomeIcon icon={faAlignRight} size="1.5" />
+                <StyledFontAwesomeIcon icon={faAlignRight} />
                 <SearchBar>
-                    <StyledFontAwesomeIcon icon={faSearch} size="1.5" />
+                    <StyledFontAwesomeIcon icon={faSearch} />
                     Search
                 </SearchBar>
             </HeaderContainer>

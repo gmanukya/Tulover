@@ -35,13 +35,13 @@ var transactionsData = [
     },
     {
         id: uuidv4(),
-        amount: 9000000,
+        amount: 90000000,
         stockholder_id: 'elon-ID',
         date: moment('2018-01-01').toISOString()
     },
     {
         id: uuidv4(),
-        amount: 1000000,
+        amount: 4000000,
         stockholder_id: 'employees-ID',
         date: moment('2018-01-01').toISOString()
     },
