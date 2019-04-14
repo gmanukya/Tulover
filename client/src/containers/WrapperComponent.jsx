@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
+
 import SideBar from '../components/SideBar'
-// import Header from '../components/Header'
+import Header from '../components/Header'
+
+const WrapperContainer = styled.div`
+    display: flex;
+`
 
 class WrapperComponent extends Component {
     render() {
-        console.log('test wrapper')
         return (
-            <div>
+            <WrapperContainer style={{ display: 'flex' }}>
                 <SideBar />
-                {/* <Header /> */}
-                {this.props.children}
-            </div>
+                <Header />
+                {/* {this.props.children} */}
+            </WrapperContainer>
         )
     }
 }
