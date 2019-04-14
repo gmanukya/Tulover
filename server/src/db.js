@@ -23,37 +23,37 @@ var stockholdersData = [
 var transactionsData = [
     {
         id: uuidv4(),
-        amount: 10000000,
+        amount: 1000000,
         stockholder_id: 'spaceX-ID',
         date: moment('2016-12-01').toISOString()
     },
     {
         id: uuidv4(),
-        amount: -10000000,
+        amount: -1000000,
         stockholder_id: 'spaceX-ID',
         date: moment('2018-01-01').toISOString()
     },
     {
         id: uuidv4(),
-        amount: 90000000,
+        amount: 9000000,
         stockholder_id: 'elon-ID',
         date: moment('2018-01-01').toISOString()
     },
     {
         id: uuidv4(),
-        amount: 4000000,
+        amount: 400000,
         stockholder_id: 'employees-ID',
         date: moment('2018-01-01').toISOString()
     },
     {
         id: uuidv4(),
-        amount: 7000000,
+        amount: 700000,
         stockholder_id: 'spaceX-ID',
         date: moment('2018-12-01').toISOString()
     },
     {
         id: uuidv4(),
-        amount: 500000,
+        amount: 50000,
         stockholder_id: 'gor-ID',
         date: moment('2019-04-01').toISOString()
     }

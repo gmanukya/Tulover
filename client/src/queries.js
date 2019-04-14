@@ -5,6 +5,15 @@ export const GET_ALL_STOCKHOLDERS = gql`
         allStockholders(date: $date) {
             id
             name
+        }
+    }
+`
+
+export const GET_ALL_STOCKHOLDERS_WITH_SHARES = gql`
+    query allStockholders($date: DateTime!) {
+        allStockholders(date: $date) {
+            id
+            name
             shares
         }
     }

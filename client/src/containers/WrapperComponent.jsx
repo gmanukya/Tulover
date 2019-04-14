@@ -11,7 +11,7 @@ const WrapperContainer = styled.div`
 const MainViewContainer = styled.div`
     position: absolute;
     width: calc(100% - 250px);
-    height: 100%;
+    height: 91%;
     left: 250px;
     top: 86px;
     background: #e2e2e24f;
