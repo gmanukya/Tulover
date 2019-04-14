@@ -33,7 +33,14 @@ const stockholder = (parent, args, context) => {
     return stockholdersData.filter(stockholder => stockholder.id == args.id)[0]
 }
 
+const transactions = (parent, args, context) => {
+    return transactionsData.filter(
+        transaction => transaction.stockholder_id == args.userId
+    )
+}
+
 module.exports = {
     stockholder,
-    allStockholders
+    allStockholders,
+    transactions
 }

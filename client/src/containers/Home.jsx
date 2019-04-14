@@ -79,6 +79,11 @@ const NameColumn = styled.div`
     margin-left: 17px;
     font-size: 14px;
     font-weight: 500;
+
+    :hover {
+        cursor: pointer;
+        color: #6f64f8;
+    }
 `
 
 const OtherColumn = styled.div`
@@ -175,6 +180,7 @@ class Home extends Component {
 
     render() {
         const { allStockholders, totalSharesAmount } = this.state
+        const { history } = this.props
 
         return (
             <div>
@@ -205,7 +211,11 @@ class Home extends Component {
 
                         return (
                             <ListItemContainer key={stockholder.id}>
-                                <NameColumn>{stockholder.name}</NameColumn>
+                                <NameColumn
+                                    onClick={() => history.push(`/stockholder/${stockholder.id}`)}
+                                >
+                                    {stockholder.name}
+                                </NameColumn>
                                 <OtherColumn marginLeftAuto>
                                     {numberWithCommas(stockholder.shares)}
                                 </OtherColumn>
