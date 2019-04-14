@@ -1,28 +1,34 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import gql from 'graphql-tag'
+import { compose, graphql } from 'react-apollo'
+import moment from 'moment'
+
+const GET_ALL_STOCKHOLDERS = gql`
+    query allStockholders($date: DateTime!) {
+        allStockholders(date: $date) {
+            id
+            name
+            shares
+        }
+    }
+`
 
 class App extends Component {
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps.data)
+    }
+
     render() {
-        return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <p>
-                        Edit <code>src/App.js</code> and save to reload.
-                    </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Learn React
-                    </a>
-                </header>
-            </div>
-        )
+        return <div>test</div>
     }
 }
 
-export default App
+export default compose(
+    graphql(GET_ALL_STOCKHOLDERS, {
+        options: () => ({
+            variables: {
+                date: moment('2019-01-01').toISOString()
+            }
+        })
+    })
+)(App)
