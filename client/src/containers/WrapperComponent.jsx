@@ -17,6 +17,10 @@ const MainViewContainer = styled.div`
     background: #e2e2e24f;
 `
 
+/*
+ * Wrapper Component for all routes that renders the sidebar and
+ * the header with the main container view that renders the component
+ */
 class WrapperComponent extends Component {
     render() {
         return (

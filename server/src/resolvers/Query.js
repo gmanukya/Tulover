@@ -1,14 +1,10 @@
 const moment = require('moment')
-const { stockholdersData, transactionsData } = require('../db.js')
+const Transaction = require('../models/Transaction')
+const Stockholder = require('../models/Stockholder')
 
 const getSharesAmount = (stockholderId, date) => {
-    const transactions = transactionsData.filter(transaction => {
-        return (
-            transaction.stockholder_id === stockholderId &&
-            moment(transaction.date).isBefore(moment(date))
-        )
-    })
-    console.log(transactions)
+    const transactions = Transaction.getTransactions(stockholderId, date)
+
     return transactions.reduce(
         (total, transaction) => total + transaction.amount,
         0
@@ -22,7 +18,9 @@ const allStockholders = (parent, args, context) => {
         date = moment().toISOString()
     }
 
-    return stockholdersData.map(stockholder => ({
+    const stockholders = Stockholder.getAllStockholders()
+
+    return stockholders.map(stockholder => ({
         id: stockholder.id,
         name: stockholder.name,
         shares: getSharesAmount(stockholder.id, args.date || date)
@@ -30,13 +28,11 @@ const allStockholders = (parent, args, context) => {
 }
 
 const stockholder = (parent, args, context) => {
-    return stockholdersData.filter(stockholder => stockholder.id == args.id)[0]
+    return Stockholder.getStockholder(args.id)
 }
 
 const transactions = (parent, args, context) => {
-    return transactionsData.filter(
-        transaction => transaction.stockholder_id == args.userId
-    )
+    return Transaction.getTransactions(args.stockholderId)
 }
 
 module.exports = {

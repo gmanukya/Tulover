@@ -8,6 +8,7 @@ const resolvers = {
     Mutation
 }
 
+// TODO: Add error handlers
 const server = new ApolloServer({ typeDefs, resolvers })
 
 server.listen().then(({ url }) => {

@@ -134,14 +134,14 @@ class Home extends Component {
     componentDidMount() {
         const { data } = this.props
         const { allStockholders } = data || {}
-        console.log(data)
+
         this.setAllStockholders(allStockholders)
     }
 
     componentWillReceiveProps(nextProps) {
         const { data } = nextProps
         const { allStockholders } = data || {}
-        console.log(data)
+
         this.setAllStockholders(allStockholders)
     }
 
@@ -173,8 +173,14 @@ class Home extends Component {
 
             const { data } = res
             const { allStockholders } = data || {}
+            if (allStockholders) {
+                const totalSharesAmount = allStockholders.reduce(
+                    (total, stockholder) => total + stockholder.shares,
+                    0
+                )
 
-            this.setState({ allStockholders, date })
+                this.setState({ allStockholders, date, totalSharesAmount })
+            }
         } catch (err) {
             console.log(`An error occured: ${err}`)
         }
@@ -234,9 +240,7 @@ class Home extends Component {
 export default compose(
     graphql(GET_ALL_STOCKHOLDERS_WITH_SHARES, {
         options: {
-            variables: {
-                date: moment().toISOString()
-            },
+            variables: {},
             fetchPolicy: 'no-cache'
         }
     })

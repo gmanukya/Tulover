@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Line } from 'react-chartjs-2'
 import moment from 'moment'
 
-import { GET_STOCKHOLDER } from '../queries'
+import { GET_TRANSACTIONS } from '../queries'
 
 const MainContainer = styled.div`
     width: 90%;
@@ -152,10 +152,10 @@ class Stockholder extends Component {
 }
 
 export default compose(
-    graphql(GET_STOCKHOLDER, {
+    graphql(GET_TRANSACTIONS, {
         options: ({ match }) => ({
             variables: {
-                userId: match.params.stockholderId
+                stockholderId: match.params.stockholderId
             }
         })
     })

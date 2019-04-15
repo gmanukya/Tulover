@@ -1,5 +1,4 @@
 const { gql } = require('apollo-server')
-const { DateTime } = require('./custom-types/Date')
 
 const typeDefs = gql`
     scalar DateTime
@@ -7,7 +6,7 @@ const typeDefs = gql`
     type Query {
         stockholder(id: ID!): Stockholder
         allStockholders(date: DateTime): [Stockholder]
-        transactions(userId: ID!): [Transaction]
+        transactions(stockholderId: ID!): [Transaction]
     }
 
     type Mutation {

@@ -173,12 +173,7 @@ class Transaction extends Component {
         try {
             await client.mutate({
                 mutation: CREATE_TRANSACTION,
-                variables: queryParams,
-                refetchQueries: [
-                    {
-                        query: GET_ALL_STOCKHOLDERS_WITH_SHARES
-                    }
-                ]
+                variables: queryParams
             })
 
             history.push('/')
@@ -253,7 +248,8 @@ export default compose(
         options: {
             variables: {
                 date: moment().toISOString()
-            }
+            },
+            fetchPolicy: 'no-cache'
         }
     })
 )(Transaction)

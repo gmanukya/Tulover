@@ -1,37 +1,23 @@
-const uuidv4 = require('uuid/v4')
-const { stockholdersData, transactionsData } = require('../db.js')
-
-const createStockholder = name => {
-    const stockholderId = uuidv4()
-    const stockholder = {
-        id: stockholderId,
-        name: name
-    }
-
-    stockholdersData.push(stockholder)
-
-    return stockholderId
-}
+const Transaction = require('../models/Transaction')
+const Stockholder = require('../models/Stockholder')
 
 const createTransaction = (parent, args, context) => {
     let { stockholderId } = args
     const { amount, date, stockholderName } = args
 
     if (!stockholderId) {
-        stockholderId = createStockholder(stockholderName)
+        stockholderId = Stockholder.createStockholder(stockholderName)
     }
 
-    const transaction = {
-        id: uuidv4(),
+    const transactionId = Transaction.createTransaction(
         amount,
-        stockholder_id: stockholderId,
+        stockholderId,
         date
-    }
+    )
 
-    transactionsData.push(transaction)
-
+    // TODO
     return {
-        id: transaction.id,
+        id: transactionId,
         amount,
         date,
         stockholder: {

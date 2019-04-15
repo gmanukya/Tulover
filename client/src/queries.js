@@ -19,9 +19,9 @@ export const GET_ALL_STOCKHOLDERS_WITH_SHARES = gql`
     }
 `
 
-export const GET_STOCKHOLDER = gql`
-    query transactions($userId: ID!) {
-        transactions(userId: $userId) {
+export const GET_TRANSACTIONS = gql`
+    query transactions($stockholderId: ID!) {
+        transactions(stockholderId: $stockholderId) {
             id
             amount
             date
