@@ -112,7 +112,7 @@ class Home extends Component {
                         <OtherColumn>Ownership</OtherColumn>
                     </ColumnSectionTitle>
                     {allStockholders.map(stockholder => {
-                        const ownerShip = (stockholder.shares * 100) / totalSharesAmount
+                        const ownerShip = (stockholder.shares * 100) / totalSharesAmount || 0
 
                         return (
                             <ListItemContainer key={stockholder.id}>
