@@ -1,21 +1,8 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 
-import SideBar from '../components/SideBar'
-import Header from '../components/Header'
-
-const WrapperContainer = styled.div`
-    display: flex;
-`
-
-const MainViewContainer = styled.div`
-    position: absolute;
-    width: calc(100% - 250px);
-    height: 91%;
-    left: 250px;
-    top: 86px;
-    background: #e2e2e24f;
-`
+import SideBar from '../../components/SideBar'
+import Header from '../../components/Header'
+import { WrapperContainer, MainViewContainer } from './style'
 
 /*
  * Wrapper Component for all routes that renders the sidebar and

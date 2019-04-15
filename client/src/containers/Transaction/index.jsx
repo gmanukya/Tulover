@@ -1,88 +1,20 @@
 import React, { Component } from 'react'
 import { compose, graphql } from 'react-apollo'
-import styled from 'styled-components'
 import moment from 'moment'
 import Creatable from 'react-select/lib/Creatable'
 
+import { GET_ALL_STOCKHOLDERS, CREATE_TRANSACTION } from '../../queries'
+import client from '../../ApolloClient'
 import {
-    GET_ALL_STOCKHOLDERS,
-    CREATE_TRANSACTION,
-    GET_ALL_STOCKHOLDERS_WITH_SHARES
-} from '../queries'
-import client from '../ApolloClient'
-
-const MainContainer = styled.div`
-    width: 90%;
-    margin: auto;
-    font-weight: 500;
-`
-const ListContainerInner = styled.div`
-    width: 95%;
-    margin: auto;
-    font-weight: 500;
-    margin-top: 50px;
-    height: 480px;
-`
-
-const ListContainer = styled.div`
-    background: white;
-    min-height: 600px;
-    border-radius: 17px;
-    border: 1px solid #d3d3d373;
-`
-
-const Title = styled.div`
-    margin-top: 30px;
-    margin-bottom: 30px;
-`
-
-const FieldTitle = styled.div`
-    margin-bottom: 20px;
-    font-size: 14px;
-    color: gray;
-`
-
-const AmountInput = styled.input`
-    background: #8080800f;
-    border: 1px solid #80808033;
-    border-radius: 10px;
-    height: 50px;
-    width: calc(100% - 13px);
-    padding-left: 10px;
-    font-size: 16px;
-    font-weight: 500;
-
-    :focus {
-        outline: none;
-    }
-`
-
-const ActionButtonsContainer = styled.div`
-    display: flex;
-    width: 96%;
-    align-items: center;
-    justify-content: flex-end;
-`
-
-const StyledButton = styled.button`
-    color: white;
-    font: inherit;
-    font-size: 14px;
-    font-weight: 600;
-    opacity: ${props => (props.disabled ? '0.5' : '0.8')};
-    background: ${props => props.backgroundColor};
-    border: none;
-    height: 45px;
-    width: 125px;
-    border-radius: 10px;
-    transition: opacity 0.3s;
-    margin-left: 10px;
-
-    :hover {
-        ${props => !props.disabled && 'opacity: 1'};
-    }
-`
-
+    MainContainer,
+    ListContainerInner,
+    ListContainer,
+    Title,
+    FieldTitle,
+    AmountInput,
+    ActionButtonsContainer,
+    StyledButton
+} from './style'
 class Transaction extends Component {
     state = {
         stockholdersOptions: [],

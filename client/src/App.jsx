@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+
 import WrapperComponent from './containers/WrapperComponent'
-import Home from './containers/Home'
 import Transaction from './containers/Transaction'
+import Home from './containers/Home'
 import Stockholder from './containers/Stockholder'
 
 class App extends Component {

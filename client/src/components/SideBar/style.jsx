@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
 import styled from 'styled-components'
 
-const SideBarContainer = styled.div`
+export const SideBarContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -10,15 +9,19 @@ const SideBarContainer = styled.div`
     background: #1f263e;
     height: -webkit-fill-available;
     min-width: 250px;
+
+    @media screen and (max-width: 650px) {
+        display: none;
+    }
 `
 
-const CompanyLogo = styled.img`
+export const CompanyLogo = styled.img`
     padding: 20px;
     height: 60px;
     border-bottom: 1px solid #4e6092;
 `
 
-const MenuLabel = styled.div`
+export const MenuLabel = styled.div`
     color: white;
     width: 83%;
     font-size: 18px;
@@ -26,7 +29,7 @@ const MenuLabel = styled.div`
     margin-bottom: 18px;
 `
 
-const MenuItem = styled.div`
+export const MenuItem = styled.div`
     background: #80808029;
     border-left: 8px solid #50b8e4;
     color: white;
@@ -36,17 +39,3 @@ const MenuItem = styled.div`
     width: 89%;
     padding-left: 18px;
 `
-
-class SideBar extends Component {
-    render() {
-        return (
-            <SideBarContainer>
-                <CompanyLogo src={require('../images/The_Boring_Company_Logo.png')} />
-                <MenuLabel>Menu</MenuLabel>
-                <MenuItem>Stockholders</MenuItem>
-            </SideBarContainer>
-        )
-    }
-}
-
-export default SideBar
