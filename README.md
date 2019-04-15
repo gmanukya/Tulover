@@ -16,7 +16,7 @@ https://nameless-mesa-87524.herokuapp.com/
 
 Backend
 ```js
-cd server && yarn
+yarn
 ```
 
 Frontend
@@ -28,7 +28,7 @@ cd client && yarn
 
 Backend
 ```js
-cd server && yarn start
+yarn start
 ```
 Frontend
 ```js
@@ -39,7 +39,7 @@ cd client && yarn start
 
 Backend
 ```js
-cd server && yarn test
+yarn test
 ```
 
 ## Future Enhancements
