@@ -134,14 +134,14 @@ class Home extends Component {
     componentDidMount() {
         const { data } = this.props
         const { allStockholders } = data || {}
-
+        console.log(data)
         this.setAllStockholders(allStockholders)
     }
 
     componentWillReceiveProps(nextProps) {
         const { data } = nextProps
         const { allStockholders } = data || {}
-
+        console.log(data)
         this.setAllStockholders(allStockholders)
     }
 
@@ -166,7 +166,9 @@ class Home extends Component {
         try {
             const res = await client.query({
                 query: GET_ALL_STOCKHOLDERS_WITH_SHARES,
-                variables: { date: moment(date).toISOString() }
+                variables: {
+                    date: moment(date).toISOString()
+                }
             })
 
             const { data } = res
@@ -234,7 +236,8 @@ export default compose(
         options: {
             variables: {
                 date: moment().toISOString()
-            }
+            },
+            fetchPolicy: 'no-cache'
         }
     })
 )(Home)

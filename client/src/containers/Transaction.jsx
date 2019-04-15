@@ -176,8 +176,7 @@ class Transaction extends Component {
                 variables: queryParams,
                 refetchQueries: [
                     {
-                        query: GET_ALL_STOCKHOLDERS_WITH_SHARES,
-                        variables: { date: moment().toISOString() }
+                        query: GET_ALL_STOCKHOLDERS_WITH_SHARES
                     }
                 ]
             })

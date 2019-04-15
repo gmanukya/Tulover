@@ -8,7 +8,7 @@ const getSharesAmount = (stockholderId, date) => {
             moment(transaction.date).isBefore(moment(date))
         )
     })
-
+    console.log(transactions)
     return transactions.reduce(
         (total, transaction) => total + transaction.amount,
         0
