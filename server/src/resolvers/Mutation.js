@@ -15,7 +15,7 @@ const createTransaction = (parent, args, context) => {
         date
     )
 
-    // TODO
+    // TODO: add shares to stockholder
     return {
         id: transactionId,
         amount,
